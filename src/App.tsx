@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div className="select2-dropdown p-3 shadow-xl" />
-      <h1 className="text-3xl font-bold bg-red-300 underline">Hello world!</h1>
+      <h1 className="bg-red-300 text-3xl font-bold underline">Hello world!</h1>
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
