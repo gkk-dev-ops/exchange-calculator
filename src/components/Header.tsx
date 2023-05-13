@@ -1,9 +1,9 @@
 type HeaderProps = {
-    // TODO: currencies are not any strings, they have to adhere to ISO 4217
-    currency1: string;
-    currency2: string;
+  // TODO: currencies are not any strings, they have to adhere to ISO 4217
+  currency1: string;
+  currency2: string;
 };
-  
+
 const Header: React.FC<HeaderProps> = ({ currency1, currency2 }) => {
   return (
     <div className="flex flex-col gap-1">
