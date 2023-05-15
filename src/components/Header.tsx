@@ -1,16 +1,16 @@
-type HeaderProps = {
-  // TODO: currencies are not any strings, they have to adhere to ISO 4217
-  currency1: string;
-  currency2: string;
-};
+const Header: React.FC = () => {
+  const popularCurrencies = ["USD", "EUR", "JPY", "GBP", "CAD", "CHF", "AUD", "CNY"]
 
-const Header: React.FC<HeaderProps> = ({ currency1, currency2 }) => {
   return (
     <div className="flex flex-col gap-1">
-      <h1 className="text-2xl font-semibold">Sell {currency1}</h1>
-      <p className="text-xs text-blue-700">
-        1 {currency1} = 0.243032 {currency2}
-      </p>
+      <h1 className="text-2xl font-semibold">Calculate PLN exchange rate</h1>
+      <div className="relative flex overflow-x-hidden">
+        <div className="animate-marquee whitespace-nowrap py-2 text-blue-700">
+      {popularCurrencies.map((currency) => (
+        <span key={currency} className="mx-2 text-xs"> 1 PLN = {1} {currency}</span>
+      ))}
+        </div>
+      </div>
     </div>
   );
 };
