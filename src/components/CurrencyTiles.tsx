@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { fetchExchangeRate } from "../api/exchangeRates";
+import { fetchExchangeRate } from "../api/exchangeRate";
+import { Currency } from "../types/types";
 
 type CurrencyTilesProps = {
-  // TODO: currencies are not any strings, they have to adhere to ISO 4217
-  currency1: string;
-  currency2: string;
+  currency1: Currency;
+  currency2: Currency;
 };
 
 const CurrencyTiles: React.FC<CurrencyTilesProps> = ({
@@ -13,13 +13,15 @@ const CurrencyTiles: React.FC<CurrencyTilesProps> = ({
 }) => {
   async function handleCurrency1Input(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
-    setcurrency1Input(value === "" ? null : Number(value));
-    setExchangeRate(await fetchExchangeRate(currency1, currency2));
-    setcurrency2Input((currency1Input ?? 1) * exchangeRate);
+    const currency1value = value === "" ? null : Math.round(Number(value)*100)/100;
+    const exchangeRate = await fetchExchangeRate(currency1, currency2);
+    const currency2value = currency1value ? Math.round(currency1value * exchangeRate*100)/100 : null
+    setcurrency1Input(currency1value);
+    setcurrency2Input(currency2value);
   }
+  
 
   const [currency1Input, setcurrency1Input] = useState<number | null>(null);
-  const [exchangeRate, setExchangeRate] = useState<number>(1);
   const [currency2Input, setcurrency2Input] = useState<number | null>(null);
 
   return (
