@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div className="mt-16 flex w-72 flex-col gap-4">
-        <Header/>
+        <Header />
         <CurrencyTiles />
         <SaveHistoryButton />
       </div>
